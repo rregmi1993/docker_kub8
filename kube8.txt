@@ -1,0 +1,37 @@
+-> start minikube
+
+-> minikube status - To check the status of kube
+
+-> kubectl get nodes - to get the node details
+
+-> kubectl run my-nginx --imgae=nginx  - to create POD
+
+-> kubectl describe pods my-nginx  - to descripe the POD
+
+-> kubectl delete pods/my-nginx  - to delete the pods
+
+
+
+-> kubectl apply -f pod.yaml - to create pod.yaml file
+pod.yaml 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-nginx-pod
+spec:
+  containers:
+   - image: nginx
+     name: my-nginx
+     ports:
+      - containerPort: 80
+        name: http
+        protocol: TCP
+
+and run -> kubectl describe pods/my-nginx-pod
+
+
+
+-> kubectl apply -f pod.yaml  - delete the pod 
+
+-> kubectl port-forward my-nginx-pod 12001:80  - pod forwarding (not recomanded in prod)

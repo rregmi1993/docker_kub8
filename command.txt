@@ -1,0 +1,51 @@
+
+You always have your local registry.
+
+An image can have multiple tags. of thses tags, some tags can be equivalents.
+
+->  docker image ls : to display the docker image details 
+
+-> docker image rm nginx:1.25.5 :untage the image
+
+day 1:
+
+
+Image: Infrastructure and the application all packed together for running
+
+jar + helper jar + jdk + other libraries + configuration + administrative setup + file system support
+
+When you run the image, you call that a container
+
+Repository -> name of the image
+Tag -> like version
+Registry -> warehouse of images
+
+Docker Hub is the default registry. But you can use your own, from Azure, AWS, GCP, etc.
+
+You always have your local registry. 
+
+An image can have multiple tags. Of these tags, some tags can be equivalents.
+
+App -> 1.0.3 -> 1.0.4 -> ... -> 1.1.2 -> ... -> sprint-1
+
+Tag is optional. If you don't specify the tag "latest" will be taken.
+
+A tag cannot be duplicated!
+
+An image is identified by the repository and tag combination. But if the tag is not specified, latest will be taken. That is written as rep:tag or rep
+
+Container is a running instance of an image
+
+Build > deploy > run
+
+docker container run [options] image
+
+docker container run [options] image <command>
+
+
+react-container -> rc
+asp-net-core-container -> dnc
+
+
+react communicates with /api which is actually the local nginx
+then in the nginx, you do the proxy pass to the actual backend (dnc)

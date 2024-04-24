@@ -1,0 +1,89 @@
+to create react app as my-app -> npx create-react-app my-app
+to start the application -> npm i --global serve
+(vscode)to build for prod: npm run build
+(vscode)we can run the application after build by going to build dir -> serve . 
+
+execute below command incase of auth error in above command
+
+(vscode)-> Set-ExecutionPolicy -Scope CurrentUser Unrestricted
+
+
+(vscode)to build in docker(after react app you can add the tag like react-app:1.20)-> docker image build -t react-app .
+
+to run in docker from cmd -> docker container run -d -p 5008:80 --name my-frontend react-app
+
+
+angular.react docker file:
+FROM nginx
+
+COPY build /usr/share/nginx/html
+
+springboot docker:
+file name: Dockerfile
+FROM openjdk:21-jdk
+
+EXPOSE 8080
+
+ARG JAR_FILE=target/spring-boot-sample-api-0.0.1-SNAPSHOT.jar
+
+ADD ${JAR_FILE} spring-app.jar
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/spring-app.jar"]
+
+#   mvn package
+#   docker image build --tag sb-app .
+
+
+bakend communication with container -> https://github.com/vivekanandpv/ng-dockerizing-with-deep-links/tree/01-backend-communication-in-container
+
+
+Reference:
+https://etcd.io/
+https://kubernetes.io/
+https://www.oreilly.com/library/view/kubernetes-up-and/9781491935668/
+https://www.oreilly.com/library/view/production-kubernetes/9781492092292/
+
+
+commands with pods:
+
+kubectl apply -f pod.yml
+kubectl get pods
+kubectl describe pod my-app-pod
+kubectl delete pod my-app-pod
+commands with ReplicaSet:
+kubectl apply -f rs.yml
+kubectl get recplicasets
+kubectl describe rs my-rs
+kubectl delete rs my-rs
+
+
+
+
+replicaset -> rs.yaml
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+   app: frontend
+   version: "1.2.4"
+  name: my-app-rs
+spec:
+  replicas: 3
+  selector:
+   matchLabels:
+    app: my-frontend-pod
+  template:
+    metadata:
+      labels:
+        app: my-frontend-pod
+    spec:
+      containers:
+      - image: nginx
+        name: my-nginx
+        ports:
+          - containerPort: 80
+            name: http
+            protocol: TCP
+
+

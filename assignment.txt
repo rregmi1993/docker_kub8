@@ -1,0 +1,15 @@
+Create a pod manifest that uses the image available in https://hub.docker.com/r/vivekanandpv/sg-sb-demo. Expose the container port 8080 as TCP. Once you run the pod, get the description of the pod and examine the events. Then, use the port-forward technique to expose the pod's application to a convenient port on the host system. Use postman to send the GET request to /api/v1/sample and ensure the result is correct.
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-backend-pod
+spec:
+  containers:
+   - image: vivekanandpv/sg-sb-demo
+     name: my-backend
+     ports:
+      - containerPort: 8080
+        name: http
+        protocol: TCP

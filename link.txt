@@ -1,0 +1,12 @@
+day -1
+https://docs.docker.com/trusted-content/dvp-program/
+https://hub.docker.com/_/nginx
+[14:37] Vivekanand P V (Guest)
+https://12factor.net/build-release-run
+
+
+note-> https://gist.github.com/vivekanandpv/07f9429b8518b524e0c151923473de61
+
+port check-> https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+
+github note-> https://gist.github.com/vivekanandpv/07f9429b8518b524e0c151923473de61

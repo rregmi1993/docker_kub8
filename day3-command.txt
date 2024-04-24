@@ -1,0 +1,73 @@
+-> kubectl get rs,pods - to display the replicate set and pods in one go
+-> kubectl delete rs my-app-rs - delete the replica set
+-> kubectl delete -f .\rs.yaml - delete the replica set by the yaml file(best practice)
+-> kubectl delete rs my-app-rs --cascade=orphan - to delete only replica without deleting the pods
+-> kubectl scale rs my-app-rs --replicas=7  - to scale the auto replica(not recommanded)
+-> kubectl autoscale rs my-app-rs --min=2 --max=7 --cpu-percent=80  : horizental pod autoscaling 
+-> kubectl get hpa  - display the replica set details - hpa- horizental pod autoscaling
+
+-> kubectl rollout history deployment my-app-dep - deployment history of rollout
+-> kubectl rollout history deployment my-app-dep --revision=2 - check the last rollout base on the revision number
+-> kubectl rollout undo deployment my-app-dep  - rollback the previous version
+-> kubectl rollout undo deployment my-app-dep --to-revision-4 - rollback the previous version
+-> kubectl get rs -o wide - display details alnog with the image name
+
+
+-> kubectl apply -f service.yaml - to apply service
+-> minikube service my-app-service --url  - to get the url to expose outside of your service
+
+
+
+Microservice:
+- independent deployment of micro service if not its not micro service
+- should not share the same database by two or more microservices
+- features: one service .net, another service in python, Rest, synch (polyglot system) 
+- smart node and dump networks 
+
+To explore -> http ingress service
+
+Replica Controller does not support the set base instructions
+
+
+deployment in miniqube aks:
+https://gist.github.com/vivekanandpv/d1836f47908163378d5f33163ff9a6f5
+kubectl apply -f app.yaml
+minikube service store-front --url
+
+link :
+HPA
+-> https://kubernetes.io/docs/reference/kubectl/generated/kubectl_autoscale/
+-> https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+
+
+SETUP doc:
+https://minikube.sigs.k8s.io/docs/start/
+https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/
+https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/
+https://kubernetes.io/docs/tasks/tools/
+
+
+1. Setup the docker desktop
+2. Install minikube
+3. download and Put kubectl in the path
+4. Start the docker desktop
+5. In the powershell, minikube start
+6. Ensure minikube statu
+7. kubectl cluster-info
+
+Github link of vivek:
+https://github.com/vivekanandpv
+
+
+books and Reference:
+1. release it -> https://pragprog.com/titles/mnee2/release-it-second-edition/
+2. microservices -> https://www.oreilly.com/library/view/building-microservices-2nd/9781492034018/
+
+3. https://martinfowler.com/microservices/
+https://www.youtube.com/watch?v=z8qhToMtYRc&pp=ygUbbWFydGluIGZvd2xlciBtaWNyb3NlcnZpY2Vz
+https://www.youtube.com/watch?v=2yko4TbC8cI&pp=ygUbbWFydGluIGZvd2xlciBtaWNyb3NlcnZpY2Vz
+https://www.youtube.com/watch?v=GBTdnfD6s5Q&pp=ygUbbWFydGluIGZvd2xlciBtaWNyb3NlcnZpY2Vz
+https://www.youtube.com/watch?v=wgdBVIX9ifA&pp=ygUbbWFydGluIGZvd2xlciBtaWNyb3NlcnZpY2Vz
+https://www.youtube.com/watch?v=STKCRSUsyP0&pp=ygUbbWFydGluIGZvd2xlciBtaWNyb3NlcnZpY2Vz
+
+deploy in Azure -> https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-portal?tabs=azure-cli
